@@ -1,8 +1,5 @@
-import jdk.javadoc.internal.doclets.formats.html.SourceToHTMLConverter;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.ArrayList;
 public class Menu {
  public static void main(String[] args){
 
@@ -24,9 +21,16 @@ public class Menu {
          int senhaDigitada = input.nextInt();
 
           //verifica se a conta já existe percorrendo a 'listaContas'
-          for(int i = 0; i < listaContas.length; i++){
-              
-          }
+          for(int i = 0; i < listaContas.size(); i++){
+              //Se o número de conta existe
+              if(listaContas.get(i).getNumConta() == numDigitado){ 
+                //Se a senha corresponde ao número da conta
+                if(listaContas.get(i).getSenhaConta() == senhaDigitada){
+                  //Chamada do método da classe 'Conta'
+                  Conta.imprimirDetalhesConta(listaContas.get(i));
+                }
+              }
+          }      
       }
 
  }
