@@ -15,33 +15,7 @@ public class Menu {
      int option = input.nextInt(); 
 
       if(option == 1){
-        System.out.println("INFORME O NÚMERO DA CONTA:");
-         int numDigitado = input.nextInt();
-        System.out.println("INFORME A SENHA DE 4 DÍGITOS");
-         int senhaDigitada = input.nextInt();
-
-          //verifica se a conta já existe percorrendo a 'listaContas'
-          for(int i = 0; i < listaContas.size(); i++){
-              //Se o número de conta existe
-              if(listaContas.get(i).getNumConta() == numDigitado){ 
-                //Se a senha corresponde ao número da conta
-                if(listaContas.get(i).getSenhaConta() == senhaDigitada){
-                  //Chamada do método da classe 'Conta'
-                  Conta.imprimirDetalhesConta(listaContas.get(i));
-
-                  System.out.println("SELECIONE UMA OPÇÃO:");
-                   System.out.println("(1) - SACAR");
-                   System.out.println("(2) - DEPOSITAR");
-                    option = input.nextInt();
-                     if(option == 1){
-                       Conta.sacar(listaContas.get(i), args);
-                     }else{
-                       Conta.depositar(listaContas.get(i), args);
-                     }
-
-                }
-              }
-          }      
+        Conta.acessarConta(listaContas, args);    
       }if(option == 2){
         Conta.abrirConta(listaContas, args);
       }
