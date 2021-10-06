@@ -28,10 +28,26 @@ public class Menu {
                 if(listaContas.get(i).getSenhaConta() == senhaDigitada){
                   //Chamada do método da classe 'Conta'
                   Conta.imprimirDetalhesConta(listaContas.get(i));
+
+                  System.out.println("SELECIONE UMA OPÇÃO:");
+                   System.out.println("(1) - SACAR");
+                   System.out.println("(2) - DEPOSITAR");
+                    option = input.nextInt();
+                     if(option == 1){
+                       Conta.sacar(listaContas.get(i), args);
+                     }else{
+                       Conta.depositar(listaContas.get(i), args);
+                     }
+
                 }
               }
           }      
+      }if(option == 2){
+        Conta.abrirConta(listaContas, args);
       }
+
+
+      input.close();
 
  }
 
