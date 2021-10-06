@@ -156,41 +156,41 @@ public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
 public static void imprimirDetalhesConta(Conta conta){
  System.out.print("-----DADOS DA CONTA-----");
   if(conta instanceof ContaPoupanca){
-    System.out.print("TIPO DE CONTA: Poupança");
+    System.out.println();
   }else{
-    System.out.print("TIPO DE CONTA: Corrente");
+    System.out.println();
   }
- System.out.print("TITULAR: " + conta.getNome());
- System.out.print("CPF: " + conta.getCpf());
- System.out.print("AGÊNCIA: " + conta.getAgencia());
- System.out.print("CONTA: " + conta.getNumConta());
- System.out.print("------------------------");
+ System.out.println("TITULAR: " + conta.getNome());
+ System.out.println("CPF: " + conta.getCpf());
+ System.out.println("AGÊNCIA: " + conta.getAgencia());
+ System.out.println("CONTA: " + conta.getNumConta());
+ System.out.println("------------------------");
 }
 
 public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
- System.out.print("QUAL O TIPO DE CONTA DESEJA ABRIR ?");
-  System.out.print("(1) - POUPANÇA");
-  System.out.print("(2) - CORRENTE");
-   System.out.print("(3) - VERIFICAR DIFERENÇAS ENTRE OS TIPOS");
+ System.out.println("QUAL O TIPO DE CONTA DESEJA ABRIR ?");
+  System.out.println("(1) - POUPANÇA");
+  System.out.println("(2) - CORRENTE");
+   System.out.println("(3) - VERIFICAR DIFERENÇAS ENTRE OS TIPOS");
   int option = input.nextInt();
 
   switch(option){
     
-    case 1: System.out.print("INFORME SEU NOME:"); 
+    case 1: System.out.println("INFORME SEU NOME:"); 
        String nomeDigitado = input.nextLine();
-         System.out.print("INFORME SEU CPF:");
+         System.out.println();
          long cpfDigitado = input.nextLong();
-           System.out.print("DEFINA UMA SENHA NÚMERICA DE 4 DÍGITOS:");
+           System.out.println();
            int senhaDigitada = input.nextInt();
        //Instance of 'ContaPoupanca' object   
        ContaPoupanca CP = new ContaPoupanca(nomeDigitado,cpfDigitado,"3920-9",aleatory.nextInt((10000-1000) + 1) + 1000,senhaDigitada, 0);
        //Add the object 'CP' to the 'listaContas'
        listaContas.add(CP);
        //Confirma que a conta foi criada com sucesso
-       System.out.print("CONTA CRIADA COM SUCESSO!");
+       System.out.println();
        Conta.imprimirDetalhesConta(CP);
 
-       System.out.print("Voltar ao início ? Sim-1, Não-2");
+       System.out.println("Voltar ao início ? Sim-1, Não-2");
        input.nextInt();
         if(option == 1){
           Menu.main(args);
