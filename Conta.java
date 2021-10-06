@@ -171,16 +171,17 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
  System.out.println("QUAL O TIPO DE CONTA DESEJA ABRIR ?");
   System.out.println("(1) - POUPANÇA");
   System.out.println("(2) - CORRENTE");
-   System.out.println("(3) - VERIFICAR DIFERENÇAS ENTRE OS TIPOS");
+  System.out.println("(3) - VERIFICAR DIFERENÇAS ENTRE OS TIPOS");
   int option = input.nextInt();
 
   switch(option){
     
-    case 1: System.out.println("INFORME SEU NOME:"); 
+    case 1:input.nextLine();
+       System.out.println("INFORME SEU NOME:"); 
        String nomeDigitado = input.nextLine();
-         System.out.println();
+         System.out.println("INFORME SEU CPF");
          long cpfDigitado = input.nextLong();
-           System.out.println();
+           System.out.println("DIGITE UMA SENHA DE 4 DÍGITOS");
            int senhaDigitada = input.nextInt();
        //Instance of 'ContaPoupanca' object   
        ContaPoupanca CP = new ContaPoupanca(nomeDigitado,cpfDigitado,"3920-9",aleatory.nextInt((10000-1000) + 1) + 1000,senhaDigitada, 0);
