@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
+//teste
+
 public class Conta {
 
   static Scanner input = new Scanner(System.in);
