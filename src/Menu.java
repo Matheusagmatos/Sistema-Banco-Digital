@@ -6,7 +6,7 @@ public class Menu {
 
      Scanner input = new Scanner(System.in);
 
-     //cria uma lista para armazenar todas as contas criadas
+     //Cria uma lista para armazenar todas as contas criadas
      ArrayList<Conta> listaContas = new ArrayList<>();
 
      //TESTE
