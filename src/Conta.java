@@ -178,6 +178,7 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
 
   switch(option){
     
+    //CASO 'POUPANÇA' FOR ESCOLHIDA
     case 1:input.nextLine();
        System.out.println("INFORME SEU NOME:"); 
        String nomeDigitado = input.nextLine();
@@ -200,6 +201,34 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
         }else{
           System.exit(0);
         }
+    
+    //CASO 'CORRENTE' FOR ESCOLHIDA
+    case 2:input.nextLine();
+    System.out.println("INFORME SEU NOME:"); 
+    nomeDigitado = input.nextLine();
+      System.out.println("INFORME SEU CPF");
+    cpfDigitado = input.nextLong();
+        System.out.println("DIGITE UMA SENHA DE 4 DÍGITOS");
+    senhaDigitada = input.nextInt();
+    //Instance of 'ContaPoupanca' object   
+    ContaCorrente CC = new ContaCorrente(nomeDigitado,cpfDigitado,"3920-9",aleatory.nextInt((10000-1000) + 1) + 1000,senhaDigitada, 0);
+    //Add the object 'CP' to the 'listaContas'
+    listaContas.add(CC);
+    //Confirma que a conta foi criada com sucesso
+    System.out.println();
+    Conta.imprimirDetalhesConta(CC);
+
+    System.out.println("Voltar ao início ? Sim-1, Não-2");
+    input.nextInt();
+     if(option == 1){
+       Menu.main(args);
+     }else{
+       System.exit(0);
+     } 
+
+    //CASO 'OPÇÃO 3' FOR ESCOLHIDA
+    case 3:
+
 
   }
 
