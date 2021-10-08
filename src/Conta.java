@@ -85,10 +85,17 @@ public static void sacar(Conta conta, String[] args){
         }
     } 
     conta.setSaldo(conta.getSaldo() - valorDigitado);
+     //Verifica se o saque foi realizado em conta corrente e cobra a taxa correspondente
+     if(conta instanceof ContaCorrente){
+       if(conta.getSaldo() >= 6.50){
+         conta.setSaldo(conta.getSaldo() - 6.50);
+       }
+     }
      System.out.println("--------------------------------");
-     System.out.println("Saque realizado com sucesso !");
-     System.out.println("Valor do saque: R$ " + valorDigitado + ",00");
-     System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00");
+     System.out.println("Saque Realizado com Sucesso !");
+     System.out.println("Valor do Saque: R$ " + valorDigitado + ",00");
+     System.out.println("Taxa Saque Conta Corrente: R$ 6,50");
+     System.out.println("Saldo Atual: R$ " + conta.getSaldo() + ",00");
      System.out.println("--------------------------------");
       System.out.print("Voltar ao início ? Sim-1, Não-2");
        int option = input.nextInt();
@@ -108,9 +115,18 @@ public static void depositar(Conta conta, String[] args){
   System.out.println("QUAL VALOR DESEJA DEPOSITAR ?"); 
    double valorDigitado = input.nextDouble();
     conta.setSaldo(valorDigitado);
+
      System.out.println("--------------------------------");
      System.out.println("Depósito realizado com sucesso !");
      System.out.println("Valor do depósito: R$ " + valorDigitado + ",00");
+     //Verifica se a conta é Poupança ou Corrente e implemnta as taxas correspondentes
+     if(conta instanceof ContaPoupanca){
+       double valorBonus = 1/100 * valorDigitado;
+       conta.setSaldo(valorDigitado + valorBonus);
+       System.out.println("Valor bônus adicionado: R$ " + valorBonus + ",00 ");  
+     }if(conta instanceof ContaCorrente){
+      System.out.println("Valor bônus adicionado: 0,00 ");
+     }
      System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00");
      System.out.println("--------------------------------");
       System.out.print("Voltar ao início ? Sim-1, Não-2");
