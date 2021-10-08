@@ -228,7 +228,24 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
 
     //CASO 'OPÇÃO 3' FOR ESCOLHIDA
     case 3:
-
+       System.out.println("------------------------------");
+       System.out.println("       CONTA POUPANÇA");
+       System.out.println("*DEPÓSITO: a cada depósito efetuado é adicionado \n um bônus de 1,0% ao valor depositado");
+       System.out.println("*SAQUE: não há taxas para saques realizados");
+       System.out.println("------------------------------");
+       System.out.println("       CONTA CORRENTE");
+       System.out.println("*DEPÓSITO: não há bônus para depósitos");
+       System.out.println("*SAQUE: taxa de R$ 6,50 reais para cada depósito realizado");
+       System.out.println("------------------------------");
+       
+       System.out.println("Voltar ao início ? Sim-1, Não-2");
+       input.nextInt();
+       if(option == 1){
+         Menu.main(args);
+       }else{
+         System.exit(0);
+       } 
+       
 
   }
 
