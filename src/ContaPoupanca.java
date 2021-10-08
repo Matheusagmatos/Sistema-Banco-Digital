@@ -5,11 +5,5 @@ public class ContaPoupanca extends Conta{
         super(nome, cpf, string, numConta, senhaConta, saldo);
     }
 
-    @Override
-    public static void depositar(Conta conta, String[] args){
-
-    }
-
-
 
 }

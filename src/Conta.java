@@ -92,10 +92,10 @@ public static void sacar(Conta conta, String[] args){
        }
      }
      System.out.println("--------------------------------");
-     System.out.println("Saque Realizado com Sucesso !");
-     System.out.println("Valor do Saque: R$ " + valorDigitado + ",00");
-     System.out.println("Taxa Saque Conta Corrente: R$ 6,50");
-     System.out.println("Saldo Atual: R$ " + conta.getSaldo() + ",00");
+     System.out.println("Saque realizado com sucesso !");
+     System.out.println("Valor do saque: R$ " + valorDigitado + ",00");
+     System.out.println("Taxa saque conta corrente: R$ 6,50");
+     System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00");
      System.out.println("--------------------------------");
       System.out.print("Voltar ao início ? Sim-1, Não-2");
        int option = input.nextInt();
@@ -211,12 +211,13 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
        Conta.imprimirDetalhesConta(CP);
 
        System.out.println("Voltar ao início ? Sim-1, Não-2");
-       input.nextInt();
+       option = input.nextInt();
         if(option == 1){
           Menu.main(args);
         }else{
           System.exit(0);
         }
+        break;
     
     //CASO 'CORRENTE' FOR ESCOLHIDA
     case 2:input.nextLine();
@@ -235,12 +236,13 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
     Conta.imprimirDetalhesConta(CC);
 
     System.out.println("Voltar ao início ? Sim-1, Não-2");
-    input.nextInt();
+    option = input.nextInt();
      if(option == 1){
        Menu.main(args);
      }else{
        System.exit(0);
      } 
+     break;
 
     //CASO 'OPÇÃO 3' FOR ESCOLHIDA
     case 3:
@@ -255,13 +257,13 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
        System.out.println("------------------------------");
        
        System.out.println("Voltar ao início ? Sim-1, Não-2");
-       input.nextInt();
+       option = input.nextInt();
        if(option == 1){
          Menu.main(args);
        }else{
          System.exit(0);
        } 
-       
+       break;
 
   }
 
