@@ -2,12 +2,13 @@ package src;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Menu {
- public static void main(String[] args){
+
+//Cria uma lista para armazenar todas as contas criadas
+static ArrayList<Conta> listaContas = new ArrayList<Conta>();
+
+  public static void main(String[] args){
 
      Scanner input = new Scanner(System.in);
-
-     //Cria uma lista para armazenar todas as contas criadas
-     ArrayList<Conta> listaContas = new ArrayList<>();
 
      //TESTE
      System.out.println("Tamanho da listaContas: " + listaContas.size());

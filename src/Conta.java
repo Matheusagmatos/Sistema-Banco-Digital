@@ -174,9 +174,9 @@ public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
 public static void imprimirDetalhesConta(Conta conta){
  System.out.print("-----DADOS DA CONTA-----");
   if(conta instanceof ContaPoupanca){
-    System.out.println();
+    System.out.println("TIPO DE CONTA: Poupança");
   }else{
-    System.out.println();
+    System.out.println("TIPO DE CONTA: Corrente");
   }
  System.out.println("TITULAR: " + conta.getNome());
  System.out.println("CPF: " + conta.getCpf());
@@ -184,6 +184,8 @@ public static void imprimirDetalhesConta(Conta conta){
  System.out.println("CONTA: " + conta.getNumConta());
  System.out.println("------------------------");
 }
+
+
 
 public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
  System.out.println("QUAL O TIPO DE CONTA DESEJA ABRIR ?");
@@ -206,6 +208,8 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
        ContaPoupanca CP = new ContaPoupanca(nomeDigitado,cpfDigitado,"3920-9",aleatory.nextInt((10000-1000) + 1) + 1000,senhaDigitada, 0);
        //Add the object 'CP' to the 'listaContas'
        listaContas.add(CP);
+       //TESTE
+       System.out.println("------------- tamanho lista contas: " + listaContas.size());
        //Confirma que a conta foi criada com sucesso
        System.out.println();
        Conta.imprimirDetalhesConta(CP);
