@@ -1,8 +1,9 @@
 package src;
+
 public class ContaPoupanca extends Conta{
 
-    public ContaPoupanca(String nome, long cpf, String string, int numConta, int senhaConta, double saldo) {
-        super(nome, cpf, string, numConta, senhaConta, saldo);
+    public ContaPoupanca(String nome, long cpf, String agencia, int numConta, int senhaConta, double saldo) {
+        super(nome, cpf, agencia, numConta, senhaConta, saldo);
     }
 
 

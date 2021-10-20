@@ -9,7 +9,7 @@ public class Conta {
   static Scanner input = new Scanner(System.in);
   static Random aleatory = new Random();
     
-  private String nome;
+  private String nome; //alterar nome para titular
   private long cpf;
   private String agencia;
   private int numConta;
@@ -26,7 +26,7 @@ public class Conta {
   }
 
   
-//Getter & setter methods   
+//Getter & Setter methods   
 public int getSenhaConta() {
     return senhaConta;
   }
@@ -68,8 +68,9 @@ public void setSaldo(double saldo){
 
 
 public static void sacar(Conta conta, String[] args){
+  
   System.out.println("--------------------------------");
-  System.out.println("SEU SALDO ATUAL: R$ " + conta.getSaldo() + ",00");
+  System.out.println("SEU SALDO ATUAL: R$ " + conta.getSaldo() + "0"); //corrigir exibição dos valores em reais
   System.out.println("--------------------------------");
   System.out.println("");
   System.out.println("QUAL VALOR DESEJA SACAR ?"); 
@@ -93,9 +94,9 @@ public static void sacar(Conta conta, String[] args){
      }
      System.out.println("--------------------------------");
      System.out.println("Saque realizado com sucesso !");
-     System.out.println("Valor do saque: R$ " + valorDigitado + ",00");
+     System.out.println("Valor do saque: R$ " + valorDigitado + ",00"); //corrigir exibição dos valores em reais
      System.out.println("Taxa saque conta corrente: R$ 6,50");
-     System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00");
+     System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00"); //corrigir exibição dos valores em reais
      System.out.println("--------------------------------");
       System.out.print("Voltar ao início ? Sim-1, Não-2");
        int option = input.nextInt();
@@ -104,12 +105,14 @@ public static void sacar(Conta conta, String[] args){
         }else{
           System.exit(0);
         }
+
  }
 
 
 public static void depositar(Conta conta, String[] args){
+
   System.out.println("--------------------------------");
-  System.out.println("SEU SALDO ATUAL: R$ " + conta.getSaldo() + ",00");
+  System.out.println("SEU SALDO ATUAL: R$ " + conta.getSaldo() + ",00"); //corrigir exibição dos valores em reais
   System.out.println("--------------------------------");
   System.out.println("");
   System.out.println("QUAL VALOR DESEJA DEPOSITAR ?"); 
@@ -118,16 +121,16 @@ public static void depositar(Conta conta, String[] args){
 
      System.out.println("--------------------------------");
      System.out.println("Depósito realizado com sucesso !");
-     System.out.println("Valor do depósito: R$ " + valorDigitado + ",00");
-     //Verifica se a conta é Poupança ou Corrente e implemnta as taxas correspondentes
+     System.out.println("Valor do depósito: R$ " + valorDigitado + ",00"); //corrigir exibição dos valores em reais
+     //Verifica se a conta é Poupança ou Corrente e cobra as taxas correspondentes
      if(conta instanceof ContaPoupanca){
        double valorBonus = 1/100 * valorDigitado;
        conta.setSaldo(valorDigitado + valorBonus);
-       System.out.println("Valor bônus adicionado: R$ " + valorBonus + ",00 ");  
+       System.out.println("Valor bônus adicionado: R$ " + valorBonus + ",00 "); //corrigir exibição dos valores em reais 
      }if(conta instanceof ContaCorrente){
       System.out.println("Valor bônus adicionado: 0,00 ");
      }
-     System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00");
+     System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00"); //corrigir exibição dos valores em reais
      System.out.println("--------------------------------");
       System.out.print("Voltar ao início ? Sim-1, Não-2");
        int option = input.nextInt();
@@ -136,10 +139,12 @@ public static void depositar(Conta conta, String[] args){
         }else{
           System.exit(0);
         }
+
  }
 
 
 public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
+  
   System.out.println("INFORME O NÚMERO DA CONTA:");
          int numDigitado = input.nextInt();
         System.out.println("INFORME A SENHA DE 4 DÍGITOS");
@@ -172,6 +177,7 @@ public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
 
 
 public static void imprimirDetalhesConta(Conta conta){
+
  System.out.print("-----DADOS DA CONTA-----");
   if(conta instanceof ContaPoupanca){
     System.out.println("TIPO DE CONTA: Poupança");
@@ -183,11 +189,13 @@ public static void imprimirDetalhesConta(Conta conta){
  System.out.println("AGÊNCIA: " + conta.getAgencia());
  System.out.println("CONTA: " + conta.getNumConta());
  System.out.println("------------------------");
+
 }
 
 
 
 public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
+
  System.out.println("QUAL O TIPO DE CONTA DESEJA ABRIR ?");
   System.out.println("(1) - POUPANÇA");
   System.out.println("(2) - CORRENTE");
@@ -208,8 +216,6 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
        ContaPoupanca CP = new ContaPoupanca(nomeDigitado,cpfDigitado,"3920-9",aleatory.nextInt((10000-1000) + 1) + 1000,senhaDigitada, 0);
        //Add the object 'CP' to the 'listaContas'
        listaContas.add(CP);
-       //TESTE
-       System.out.println("------------- tamanho lista contas: " + listaContas.size());
        //Confirma que a conta foi criada com sucesso
        System.out.println();
        Conta.imprimirDetalhesConta(CP);
