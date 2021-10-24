@@ -196,7 +196,6 @@ public static void imprimirDetalhesConta(Conta conta){
   }else{
     System.out.println("TIPO DE CONTA: Corrente");
   }
-  String cpfToString = Long.toString(conta.getCpf());
  System.out.println("CPF: " + conta.getCpf());
  System.out.println("AGÊNCIA: " + conta.getAgencia());
  System.out.println("CONTA: " + conta.getNumConta());
