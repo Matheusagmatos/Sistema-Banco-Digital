@@ -196,22 +196,8 @@ public static void imprimirDetalhesConta(Conta conta){
   }else{
     System.out.println("TIPO DE CONTA: Corrente");
   }
-  //Formatando o CPF (inserindo pontos e traço)
-  String cpfFormatado = Long.toString(conta.getCpf());
-  char[] cpfFormatado1 = cpfFormatado.toCharArray();
- if(cpfFormatado.length() == 11){ //Se o cpf não inicia com "0"
-  System.out.print("CPF: " + cpfFormatado1[0] + cpfFormatado1[1] + cpfFormatado1[2] + ".");
-   System.out.print(cpfFormatado1[3] + cpfFormatado1[4] + cpfFormatado1[5] + ".");
-    System.out.print(cpfFormatado1[6] + cpfFormatado1[7] + cpfFormatado1[8] + "-");
-     System.out.print(cpfFormatado1[9] + cpfFormatado1[10]);
-      System.out.println();
- }else{ //Se o cpf inicia com "0"
-  System.out.print("CPF: " + "0" + cpfFormatado1[0] + cpfFormatado1[1] + ".");
-   System.out.print(cpfFormatado1[2] + cpfFormatado1[3] + cpfFormatado1[4] + ".");
-    System.out.print(cpfFormatado1[5] + cpfFormatado1[6] + cpfFormatado1[7] + "-");
-     System.out.print(cpfFormatado1[8] + cpfFormatado1[9]);
-      System.out.println();
- }
+  String cpfToString = Long.toString(conta.getCpf());
+ System.out.println("CPF: " + conta.getCpf());
  System.out.println("AGÊNCIA: " + conta.getAgencia());
  System.out.println("CONTA: " + conta.getNumConta());
  System.out.println("SALDO: " + realBrasileiro.format(conta.getSaldo()));
