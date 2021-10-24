@@ -2,12 +2,20 @@ package src;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.sound.sampled.SourceDataLine;
+
 import java.util.Random;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Conta {
 
   static Scanner input = new Scanner(System.in);
   static Random aleatory = new Random();
+  static Locale localeBR = new Locale("pt","BR");
+
+  static NumberFormat realBrasileiro = NumberFormat.getCurrencyInstance(localeBR); //essa variável irá armazenar a formatação dos valores em na moeda 'Real Brasileiro'
     
   private String nome; //alterar nome para titular
   private long cpf;
@@ -68,9 +76,9 @@ public void setSaldo(double saldo){
 
 
 public static void sacar(Conta conta, String[] args){
-  
+
   System.out.println("--------------------------------");
-  System.out.println("SEU SALDO ATUAL: R$ " + conta.getSaldo() + "0"); //corrigir exibição dos valores em reais
+  System.out.println("SEU SALDO ATUAL: " + realBrasileiro.format(conta.getSaldo()));
   System.out.println("--------------------------------");
   System.out.println("");
   System.out.println("QUAL VALOR DESEJA SACAR ?"); 
@@ -84,19 +92,27 @@ public static void sacar(Conta conta, String[] args){
           System.out.println("OPERAÇÃO ENCERRADA!");
            System.exit(0);
         }
+    }if(valorDigitado == 0){
+      System.out.println("Valor inválido !");
+      System.out.println("Digite um valor maior que zero");
+      valorDigitado = input.nextDouble();
+      if(valorDigitado == 0){
+        System.out.println("Valor inválido !");
+        System.out.println("OPERAÇÃO ENCERRADA!");
+      }
     } 
     conta.setSaldo(conta.getSaldo() - valorDigitado);
      //Verifica se o saque foi realizado em conta corrente e cobra a taxa correspondente
+     System.out.println("--------------------------------");
+     System.out.println("Saque realizado com sucesso !");
+     System.out.println("Valor do saque: " + realBrasileiro.format(valorDigitado));
      if(conta instanceof ContaCorrente){
        if(conta.getSaldo() >= 6.50){
          conta.setSaldo(conta.getSaldo() - 6.50);
+         System.out.println("Taxa saque conta corrente: R$ 6,50");
        }
      }
-     System.out.println("--------------------------------");
-     System.out.println("Saque realizado com sucesso !");
-     System.out.println("Valor do saque: R$ " + valorDigitado + ",00"); //corrigir exibição dos valores em reais
-     System.out.println("Taxa saque conta corrente: R$ 6,50");
-     System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00"); //corrigir exibição dos valores em reais
+     System.out.println("Saldo atual: " + realBrasileiro.format(conta.getSaldo())); 
      System.out.println("--------------------------------");
       System.out.print("Voltar ao início ? Sim-1, Não-2");
        int option = input.nextInt();
@@ -112,27 +128,25 @@ public static void sacar(Conta conta, String[] args){
 public static void depositar(Conta conta, String[] args){
 
   System.out.println("--------------------------------");
-  System.out.println("SEU SALDO ATUAL: R$ " + conta.getSaldo() + ",00"); //corrigir exibição dos valores em reais
+  System.out.println("SEU SALDO ATUAL: " + realBrasileiro.format(conta.getSaldo())); 
   System.out.println("--------------------------------");
   System.out.println("");
   System.out.println("QUAL VALOR DESEJA DEPOSITAR ?"); 
    double valorDigitado = input.nextDouble();
-    conta.setSaldo(valorDigitado);
+    conta.setSaldo(conta.getSaldo() + valorDigitado);
 
      System.out.println("--------------------------------");
      System.out.println("Depósito realizado com sucesso !");
-     System.out.println("Valor do depósito: R$ " + valorDigitado + ",00"); //corrigir exibição dos valores em reais
+     System.out.println("Valor do depósito: " + realBrasileiro.format(valorDigitado)); 
      //Verifica se a conta é Poupança ou Corrente e cobra as taxas correspondentes
      if(conta instanceof ContaPoupanca){
-       double valorBonus = 1/100 * valorDigitado;
-       conta.setSaldo(valorDigitado + valorBonus);
-       System.out.println("Valor bônus adicionado: R$ " + valorBonus + ",00 "); //corrigir exibição dos valores em reais 
-     }if(conta instanceof ContaCorrente){
-      System.out.println("Valor bônus adicionado: 0,00 ");
+       double valorBonus = 0.01 * valorDigitado;
+       conta.setSaldo(conta.getSaldo() + valorBonus);
+       System.out.println("Valor bônus adicionado: " + realBrasileiro.format(valorBonus));
      }
-     System.out.println("Saldo atual: R$ " + conta.getSaldo() + ",00"); //corrigir exibição dos valores em reais
+     System.out.println("Saldo atual: " + realBrasileiro.format(conta.getSaldo()));
      System.out.println("--------------------------------");
-      System.out.print("Voltar ao início ? Sim-1, Não-2");
+      System.out.println("Voltar ao início ? 1-Sim, 2-Não");
        int option = input.nextInt();
         if(option == 1){
           Menu.main(args);
@@ -178,16 +192,17 @@ public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
 
 public static void imprimirDetalhesConta(Conta conta){
 
- System.out.print("-----DADOS DA CONTA-----");
+ System.out.println("-----DADOS DA CONTA-----");
+ System.out.println("TITULAR: " + conta.getNome());
   if(conta instanceof ContaPoupanca){
     System.out.println("TIPO DE CONTA: Poupança");
   }else{
     System.out.println("TIPO DE CONTA: Corrente");
   }
- System.out.println("TITULAR: " + conta.getNome());
  System.out.println("CPF: " + conta.getCpf());
  System.out.println("AGÊNCIA: " + conta.getAgencia());
  System.out.println("CONTA: " + conta.getNumConta());
+ System.out.println("SALDO: " + realBrasileiro.format(conta.getSaldo()));
  System.out.println("------------------------");
 
 }
@@ -264,6 +279,7 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
        System.out.println("       CONTA CORRENTE");
        System.out.println("*DEPÓSITO: não há bônus para depósitos");
        System.out.println("*SAQUE: taxa de R$ 6,50 reais para cada depósito realizado");
+       System.out.println("Obs: taxa de saque somente será cobrada se o valor do saldo \n após a operação for maior que R$ 6,50");
        System.out.println("------------------------------");
        
        System.out.println("Voltar ao início ? Sim-1, Não-2");
