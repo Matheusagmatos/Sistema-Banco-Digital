@@ -155,11 +155,16 @@ public static void depositar(Conta conta, String[] args){
 
 
 public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
-  
-  System.out.println("INFORME O NÚMERO DA CONTA:");
-         int numDigitado = input.nextInt();
+      
+      int numDigitado;
+      int senhaDigitada;
+
+      do{
+        System.out.println("INFORME O NÚMERO DA CONTA:");
+         numDigitado = input.nextInt();
         System.out.println("INFORME A SENHA DE 4 DÍGITOS");
-         int senhaDigitada = input.nextInt();
+         senhaDigitada = input.nextInt();
+      }while(Validations.validarContaeSenhaDeAcesso(listaContas, numDigitado, senhaDigitada) == false);
 
           //verifica se a conta já existe percorrendo a 'listaContas'
           for(int i = 0; i < listaContas.size(); i++){
@@ -223,29 +228,29 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
         input.nextLine();
 
         System.out.println("INFORME SEU NOME COMPLETO:"); 
-        String nomeDigitado = input.nextLine();
-        nomeDigitado.trim();
+        String nomeDigitado1 = input.nextLine();
+        nomeDigitado1.trim();
           
-        String cpfDigitado;
+        String cpfDigitado1;
           do{
            System.out.println("INFORME SEU CPF");
-           cpfDigitado = input.nextLine();
-          }while(Validations.validarCPF(cpfDigitado) == false);
+           cpfDigitado1 = input.nextLine();
+          }while(Validations.validarCPF(cpfDigitado1) == false);
          
-        int senhaDigitada;
+        int senhaDigitada1;
          do{
            System.out.println("DIGITE UMA SENHA DE 4 DÍGITOS");
-           senhaDigitada = input.nextInt();
-         }while(Validations.validarSenha(senhaDigitada) == false);
+           senhaDigitada1 = input.nextInt();
+         }while(Validations.validarSenha(senhaDigitada1) == false);
 
-        int numConta;
+        int numConta1;
          do{
-          numConta = aleatory.nextInt((10000-1000) + 1) + 1000;
-         }while(Validations.validarNumeroDaConta(listaContas, numConta) == false);
+          numConta1 = aleatory.nextInt((10000-1000) + 1) + 1000;
+         }while(Validations.validarNumeroDaContaGerado(listaContas, numConta1) == false);
 
 
        //Instance of 'ContaPoupanca' object   
-       ContaPoupanca CP = new ContaPoupanca(nomeDigitado,cpfDigitado,"3920-9",numConta,senhaDigitada, 0);
+       ContaPoupanca CP = new ContaPoupanca(nomeDigitado1,cpfDigitado1,"3920-9",numConta1,senhaDigitada1, 0);
 
        //Add the object 'CP' to the 'listaContas'
        listaContas.add(CP);
@@ -264,15 +269,34 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
         break;
     
     //CASO 'CORRENTE' FOR ESCOLHIDA
-    case 2:input.nextLine();
-    System.out.println("INFORME SEU NOME:"); 
-    nomeDigitado = input.nextLine();
-      System.out.println("INFORME SEU CPF");
-    cpfDigitado = input.nextLine();
-        System.out.println("DIGITE UMA SENHA DE 4 DÍGITOS");
-    senhaDigitada = input.nextInt();
+    case 2:
+
+        input.nextLine();
+
+        System.out.println("INFORME SEU NOME COMPLETO:"); 
+        String nomeDigitado2 = input.nextLine();
+        nomeDigitado2.trim();
+          
+        String cpfDigitado2;
+          do{
+           System.out.println("INFORME SEU CPF");
+           cpfDigitado2 = input.nextLine();
+          }while(Validations.validarCPF(cpfDigitado2) == false);
+         
+        int senhaDigitada2;
+         do{
+           System.out.println("DIGITE UMA SENHA DE 4 DÍGITOS");
+           senhaDigitada2 = input.nextInt();
+         }while(Validations.validarSenha(senhaDigitada2) == false);
+
+        int numConta2;
+         do{
+          numConta2 = aleatory.nextInt((10000-1000) + 1) + 1000;
+         }while(Validations.validarNumeroDaContaGerado(listaContas, numConta2) == false);
+
+
     //Instance of 'ContaPoupanca' object   
-    ContaCorrente CC = new ContaCorrente(nomeDigitado,cpfDigitado,"3920-9",aleatory.nextInt((10000-1000) + 1) + 1000,senhaDigitada, 0);
+    ContaCorrente CC = new ContaCorrente(nomeDigitado2,cpfDigitado2,"3920-9",numConta2,senhaDigitada2, 0);
     //Add the object 'CP' to the 'listaContas'
     listaContas.add(CC);
     //Confirma que a conta foi criada com sucesso
