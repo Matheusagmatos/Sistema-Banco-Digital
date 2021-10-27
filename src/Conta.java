@@ -15,14 +15,14 @@ public class Conta {
   static NumberFormat realBrasileiro = NumberFormat.getCurrencyInstance(localeBR); //essa variável irá armazenar a formatação dos valores em na moeda 'Real Brasileiro'
     
   private String nome; //alterar nome para titular
-  private long cpf;
+  private String cpf;
   private String agencia;
   private int numConta;
   private int senhaConta;
   private double saldo;
 
   //Constructor
-  public Conta(String nome, long cpf, String agencia, int numConta, int senhaConta, double saldo) {
+  public Conta(String nome, String cpf, String agencia, int numConta, int senhaConta, double saldo) {
     this.setNome(nome);
     this.setCpf(cpf);
     this.setAgencia(agencia);
@@ -50,10 +50,10 @@ public String getAgencia() {
 public void setAgencia(String agencia) {
     this.agencia = agencia;
   }
-public long getCpf() {
+public String getCpf() {
     return cpf;
   }
-public void setCpf(long cpf) {
+public void setCpf(String cpf) {
     this.cpf = cpf;
   }
 public String getNome() {
@@ -196,12 +196,13 @@ public static void imprimirDetalhesConta(Conta conta){
   }else{
     System.out.println("TIPO DE CONTA: Corrente");
   }
- System.out.println("CPF: " + conta.getCpf());
+ //formatamos a impressão do cpf
+ char[] cpfFormatado = (conta.getCpf().toCharArray());
+ System.out.println("CPF: " +cpfFormatado[0]+cpfFormatado[1]+cpfFormatado[2]+"."+cpfFormatado[3]+cpfFormatado[4]+cpfFormatado[5]+"."+cpfFormatado[6]+cpfFormatado[7]+cpfFormatado[8]+"-"+cpfFormatado[9]+cpfFormatado[10]);
  System.out.println("AGÊNCIA: " + conta.getAgencia());
  System.out.println("CONTA: " + conta.getNumConta());
  System.out.println("SALDO: " + realBrasileiro.format(conta.getSaldo()));
  System.out.println("------------------------");
-
 }
 
 
@@ -217,18 +218,38 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
   switch(option){
     
     //CASO 'POUPANÇA' FOR ESCOLHIDA
-    case 1:input.nextLine();
-       System.out.println("INFORME SEU NOME COMPLETO:"); 
-       String nomeDigitado = input.nextLine();
+    case 1:
+    
+        input.nextLine();
+
+        System.out.println("INFORME SEU NOME COMPLETO:"); 
+        String nomeDigitado = input.nextLine();
         nomeDigitado.trim();
-         System.out.println("INFORME SEU CPF");
-         long cpfDigitado = input.nextLong();
+          
+        String cpfDigitado;
+          do{
+           System.out.println("INFORME SEU CPF");
+           cpfDigitado = input.nextLine();
+          }while(Validations.validarCPF(cpfDigitado) == false);
+         
+        int senhaDigitada;
+         do{
            System.out.println("DIGITE UMA SENHA DE 4 DÍGITOS");
-           int senhaDigitada = input.nextInt();
+           senhaDigitada = input.nextInt();
+         }while(Validations.validarSenha(senhaDigitada) == false);
+
+        int numConta;
+         do{
+          numConta = aleatory.nextInt((10000-1000) + 1) + 1000;
+         }while(Validations.validarNumeroDaConta(listaContas, numConta) == false);
+
+
        //Instance of 'ContaPoupanca' object   
-       ContaPoupanca CP = new ContaPoupanca(nomeDigitado,cpfDigitado,"3920-9",aleatory.nextInt((10000-1000) + 1) + 1000,senhaDigitada, 0);
+       ContaPoupanca CP = new ContaPoupanca(nomeDigitado,cpfDigitado,"3920-9",numConta,senhaDigitada, 0);
+
        //Add the object 'CP' to the 'listaContas'
        listaContas.add(CP);
+
        //Confirma que a conta foi criada com sucesso
        System.out.println();
        Conta.imprimirDetalhesConta(CP);
@@ -247,7 +268,7 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
     System.out.println("INFORME SEU NOME:"); 
     nomeDigitado = input.nextLine();
       System.out.println("INFORME SEU CPF");
-    cpfDigitado = input.nextLong();
+    cpfDigitado = input.nextLine();
         System.out.println("DIGITE UMA SENHA DE 4 DÍGITOS");
     senhaDigitada = input.nextInt();
     //Instance of 'ContaPoupanca' object   
