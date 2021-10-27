@@ -6,5 +6,4 @@ public class ContaPoupanca extends Conta{
         super(nome, cpf, agencia, numConta, senhaConta, saldo);
     }
 
-
 }
