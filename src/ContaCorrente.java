@@ -2,8 +2,8 @@ package src;
 
 public class ContaCorrente extends Conta{
 
-    public ContaCorrente(String nome, String cpf, String agencia, int numConta, int senhaConta, double saldo) {
-        super(nome, cpf, agencia, numConta, senhaConta, saldo);
+    public ContaCorrente(String titular, String cpf, String agencia, int numConta, int senhaConta, double saldo) {
+        super(titular, cpf, agencia, numConta, senhaConta, saldo);
     }
 
     
