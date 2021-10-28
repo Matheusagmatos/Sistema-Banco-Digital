@@ -14,7 +14,7 @@ public class Conta {
 
   static NumberFormat realBrasileiro = NumberFormat.getCurrencyInstance(localeBR); //essa variável irá armazenar a formatação dos valores em na moeda 'Real Brasileiro'
     
-  private String nome; //alterar nome para titular
+  private String titular; //alterar nome para titular
   private String cpf;
   private String agencia;
   private int numConta;
@@ -22,8 +22,8 @@ public class Conta {
   private double saldo;
 
   //Constructor
-  public Conta(String nome, String cpf, String agencia, int numConta, int senhaConta, double saldo) {
-    this.setNome(nome);
+  public Conta(String titular, String cpf, String agencia, int numConta, int senhaConta, double saldo) {
+    this.setTitular(titular);
     this.setCpf(cpf);
     this.setAgencia(agencia);
     this.setNumConta(numConta);
@@ -56,10 +56,10 @@ public String getCpf() {
 public void setCpf(String cpf) {
     this.cpf = cpf;
   }
-public String getNome() {
+public String getTitular() {
     return nome;
   }
-public void setNome(String nome) {
+public void setTitular(String nome) {
     this.nome = nome;
   }
 public double getSaldo(){
@@ -195,7 +195,7 @@ public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
 public static void imprimirDetalhesConta(Conta conta){
 
  System.out.println("-----DADOS DA CONTA-----");
- System.out.println("TITULAR: " + conta.getNome());
+ System.out.println("TITULAR: " + conta.getTitular());
   if(conta instanceof ContaPoupanca){
     System.out.println("TIPO DE CONTA: Poupança");
   }else{
