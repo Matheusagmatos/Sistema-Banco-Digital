@@ -1,17 +1,19 @@
 package src;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ExtratoBancario {
 
-  File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
 
-  extratoBancario.
+  public static void extratoSaque(Conta conta, double valorSaque, boolean CP, boolean CC) throws IOException{
 
-
-  public static void extratoSaque(Conta conta, double valorSaque, boolean CP, boolean CC){
+    File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
     
+    extratoBancario.createNewFile();
+
   }
+
 
 
   public static void extratoDeposito(Conta conta, double valorDeposito, boolean CP, boolean CC){
