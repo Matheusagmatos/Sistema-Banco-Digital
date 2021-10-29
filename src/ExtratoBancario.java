@@ -6,6 +6,8 @@ public class ExtratoBancario {
 
   File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
 
+  extratoBancario.
+
 
   public static void extratoSaque(Conta conta, double valorSaque, boolean CP, boolean CC){
     
