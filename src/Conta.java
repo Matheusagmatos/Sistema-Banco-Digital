@@ -3,6 +3,8 @@ package src;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
+import java.io.IOException;
+import java.text.Format;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -57,10 +59,10 @@ public void setCpf(String cpf) {
     this.cpf = cpf;
   }
 public String getTitular() {
-    return nome;
+    return titular;
   }
-public void setTitular(String nome) {
-    this.nome = nome;
+public void setTitular(String titular) {
+    this.titular = titular;
   }
 public double getSaldo(){
    return saldo;
@@ -96,6 +98,12 @@ public static void sacar(Conta conta, String[] args){
       if(valorDigitado == 0){
         System.out.println("Valor inválido !");
         System.out.println("OPERAÇÃO ENCERRADA!");
+        System.exit(0);
+      }if(valorDigitado > conta.getSaldo()){
+        System.out.println("Valor inválido !");
+        System.out.println("Saldo insuficiente.");
+        System.exit(0);
+
       }
     } 
     conta.setSaldo(conta.getSaldo() - valorDigitado);
@@ -103,13 +111,31 @@ public static void sacar(Conta conta, String[] args){
      System.out.println("--------------------------------");
      System.out.println("Saque realizado com sucesso !");
      System.out.println("Valor do saque: " + realBrasileiro.format(valorDigitado));
+     double taxaSaque = 6.50;
      if(conta instanceof ContaCorrente){
-       if(conta.getSaldo() >= 6.50){
-         conta.setSaldo(conta.getSaldo() - 6.50);
-         System.out.println("Taxa saque conta corrente: R$ 6,50");
+       if(conta.getSaldo() >= taxaSaque){
+         conta.setSaldo(conta.getSaldo() - taxaSaque);
+         System.out.println("Taxa saque conta corrente: " + realBrasileiro.format(taxaSaque));
        }
      }
      System.out.println("Saldo atual: " + realBrasileiro.format(conta.getSaldo())); 
+     //Chamada ao método 'extratoSaque' da clase 'ExtratoBancario'
+     if(conta instanceof ContaPoupanca){
+      try {
+        ExtratoBancario.extratoSaque(conta, valorDigitado, taxaSaque, true, false);
+      } catch (IOException e) {
+        System.out.println("Ocorreu um erro inesperado.");
+        e.printStackTrace();
+      }
+     }if(conta instanceof ContaCorrente){
+      try{
+        ExtratoBancario.extratoSaque(conta, valorDigitado, taxaSaque, false, true);
+      } catch (IOException e){
+        System.out.println("Ocorreu um erro inesperado.");
+        e.printStackTrace();
+      }
+     }
+
      System.out.println("--------------------------------");
       System.out.print("Voltar ao início ? Sim-1, Não-2");
        int option = input.nextInt();
@@ -136,12 +162,31 @@ public static void depositar(Conta conta, String[] args){
      System.out.println("Depósito realizado com sucesso !");
      System.out.println("Valor do depósito: " + realBrasileiro.format(valorDigitado)); 
      //Verifica se a conta é Poupança ou Corrente e cobra as taxas correspondentes
+     double valorBonus = 0;
      if(conta instanceof ContaPoupanca){
-       double valorBonus = 0.01 * valorDigitado;
+       valorBonus = 0.01 * valorDigitado;
        conta.setSaldo(conta.getSaldo() + valorBonus);
        System.out.println("Valor bônus adicionado: " + realBrasileiro.format(valorBonus));
      }
      System.out.println("Saldo atual: " + realBrasileiro.format(conta.getSaldo()));
+
+     //Chamada ao método 'extratoDeposito' da clase 'ExtratoBancario'
+     if(conta instanceof ContaPoupanca){
+       try {
+        ExtratoBancario.extratoDeposito(conta, valorDigitado, valorBonus, true, false);
+      } catch (IOException e) {
+        System.out.println("Ocorreu um erro inesperado.");
+        e.printStackTrace();
+      }
+     }if(conta instanceof ContaCorrente){
+      try {
+        ExtratoBancario.extratoDeposito(conta, valorDigitado, valorBonus, true, false);
+      } catch (IOException e) {
+        System.out.println("Ocorreu um erro inesperado.");
+        e.printStackTrace();
+      }
+     }
+
      System.out.println("--------------------------------");
       System.out.println("Voltar ao início ? 1-Sim, 2-Não");
        int option = input.nextInt();
