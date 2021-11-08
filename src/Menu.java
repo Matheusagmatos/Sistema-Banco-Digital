@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -15,8 +16,14 @@ static ArrayList<Conta> listaContas = new ArrayList<Conta>();
      System.out.println("--- BANCO DIGITAL ---");
      System.out.println("(1) -> ACESSAR CONTA");
      System.out.println("(2) -> ABRIR CONTA");
+
+     int option = 0;
      
-     int option = input.nextInt(); 
+    try{
+       option = input.nextInt(); 
+    }catch(InputMismatchException e){
+       System.out.println("Tipo de entrada inválida!");
+    }
 
       if(option == 1){
         Conta.acessarConta(listaContas, args);    
