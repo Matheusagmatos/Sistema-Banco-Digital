@@ -301,7 +301,7 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
        listaContas.add(CP);
 
     try {
-      ExtratoBancario.extratoAberturaConta(CP,false,true);
+      ExtratoBancario.extratoAberturaConta(CP,true,false);
     } catch (IOException e) {
       e.printStackTrace();
     }
