@@ -145,7 +145,7 @@ public class ExtratoBancario {
     bw.newLine();
     bw.write("Conta: " + conta.getNumConta());
     bw.newLine();
-    bw.write("--------------------------");
+    bw.write("-------------------------------");
     bw.newLine();
     bw.write("Data: " + dataAtual.getDayOfMonth() +"/"+ dataAtual.getMonthValue() +"/"+ dataAtual.getYear() + 
     "     Hora: " + horaAtual.getHour() +":"+ horaAtual.getMinute() +":"+ horaAtual.getSecond());
