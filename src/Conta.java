@@ -300,8 +300,15 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
        //Add the object 'CP' to the 'listaContas'
        listaContas.add(CP);
 
+    try {
+      ExtratoBancario.extratoAberturaConta(CP,false,true);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
        //Confirma que a conta foi criada com sucesso
        System.out.println();
+       System.out.println("Conta criada com sucesso!");
        Conta.imprimirDetalhesConta(CP);
 
        System.out.println("Voltar ao início ? Sim-1, Não-2");
@@ -344,8 +351,17 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
     ContaCorrente CC = new ContaCorrente(nomeDigitado2,cpfDigitado2,"3920-9",numConta2,senhaDigitada2, 0);
     //Add the object 'CP' to the 'listaContas'
     listaContas.add(CC);
+
+    try {
+      ExtratoBancario.extratoAberturaConta(CC,false,true);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+
     //Confirma que a conta foi criada com sucesso
     System.out.println();
+    System.out.println("Conta criada com sucesso!");
     Conta.imprimirDetalhesConta(CC);
 
     System.out.println("Voltar ao início ? Sim-1, Não-2");
