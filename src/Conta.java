@@ -1,10 +1,10 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 import java.io.IOException;
-import java.text.Format;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -81,11 +81,26 @@ public static void sacar(Conta conta, String[] args){
   System.out.println("--------------------------------");
   System.out.println("");
   System.out.println("QUAL VALOR DESEJA SACAR ?"); 
-   double valorDigitado = input.nextDouble();
+
+  double valorDigitado = 0;
+  try{
+   valorDigitado = input.nextDouble();
+  }catch(InputMismatchException exception){
+   System.out.println("Tipo de dado inválido!");
+   exception.printStackTrace();
+  }
     if(valorDigitado > conta.getSaldo()){
       System.out.println("Valor digitado ultrapassa o saldo atual"); 
       System.out.println("Digite novo valor de saque:"); 
-       valorDigitado = input.nextDouble();
+       
+      try{
+        valorDigitado = input.nextDouble();
+       }catch(InputMismatchException exception){
+        System.out.println("Tipo de dado inválido!");
+        exception.printStackTrace();
+       }
+
+       
         if(valorDigitado > conta.getSaldo()){
           System.out.println("Valor digitado ultrapassa o saldo atual");
           System.out.println("OPERAÇÃO ENCERRADA!");
@@ -94,7 +109,12 @@ public static void sacar(Conta conta, String[] args){
     }if(valorDigitado == 0){
       System.out.println("Valor inválido !");
       System.out.println("Digite um valor maior que zero");
-      valorDigitado = input.nextDouble();
+      try{
+        valorDigitado = input.nextDouble();
+       }catch(InputMismatchException exception){
+        System.out.println("Tipo de dado inválido!");
+        exception.printStackTrace();
+       }
       if(valorDigitado == 0){
         System.out.println("Valor inválido !");
         System.out.println("OPERAÇÃO ENCERRADA!");
@@ -138,7 +158,13 @@ public static void sacar(Conta conta, String[] args){
 
      System.out.println("--------------------------------");
       System.out.print("Voltar ao início ? Sim-1, Não-2");
-       int option = input.nextInt();
+      int option = 0;
+      try{
+       option = input.nextInt();
+      }catch(InputMismatchException e){
+       System.out.println("Tipo de dado inválido!");
+       e.printStackTrace();
+      }
         if(option == 1){
           Menu.main(args);
         }else{
@@ -154,8 +180,16 @@ public static void depositar(Conta conta, String[] args){
   System.out.println("SEU SALDO ATUAL: " + realBrasileiro.format(conta.getSaldo())); 
   System.out.println("--------------------------------");
   System.out.println("");
-  System.out.println("QUAL VALOR DESEJA DEPOSITAR ?"); 
-   double valorDigitado = input.nextDouble();
+  System.out.println("QUAL VALOR DESEJA DEPOSITAR ?");
+
+   double valorDigitado = 0;
+   try{
+    valorDigitado = input.nextDouble();
+   }catch(InputMismatchException exception){
+    System.out.println("Tipo de dado inválido!");
+    exception.printStackTrace();
+   }
+
     conta.setSaldo(conta.getSaldo() + valorDigitado);
 
      System.out.println("--------------------------------");
@@ -189,7 +223,13 @@ public static void depositar(Conta conta, String[] args){
 
      System.out.println("--------------------------------");
       System.out.println("Voltar ao início ? 1-Sim, 2-Não");
-       int option = input.nextInt();
+       int option = 0;
+      try{
+       option = input.nextInt();
+      }catch(InputMismatchException exception){
+        System.out.println("Tipo de dado inválido!");
+        exception.printStackTrace();
+      }
         if(option == 1){
           Menu.main(args);
         }else{
@@ -201,14 +241,19 @@ public static void depositar(Conta conta, String[] args){
 
 public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
       
-      int numDigitado;
-      int senhaDigitada;
+      int numDigitado = 0;
+      int senhaDigitada = 0;
 
       do{
-        System.out.println("INFORME O NÚMERO DA CONTA:");
-         numDigitado = input.nextInt();
-        System.out.println("INFORME A SENHA DE 4 DÍGITOS");
-         senhaDigitada = input.nextInt();
+        try{
+          System.out.println("INFORME O NÚMERO DA CONTA:");
+           numDigitado = input.nextInt();
+          System.out.println("INFORME A SENHA DE 4 DÍGITOS");
+           senhaDigitada = input.nextInt();
+        }catch(InputMismatchException e){
+          System.out.println("Tipo de dado inválido!");
+          e.printStackTrace();
+        }
       }while(Validations.validarContaeSenhaDeAcesso(listaContas, numDigitado, senhaDigitada) == false);
 
           //verifica se a conta já existe percorrendo a 'listaContas'
@@ -223,7 +268,16 @@ public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
                   System.out.println("SELECIONE UMA OPÇÃO:");
                    System.out.println("(1) - SACAR");
                    System.out.println("(2) - DEPOSITAR");
-                    int option = input.nextInt();
+
+                   int option = 0;
+
+                  try{
+                    option = input.nextInt();
+                  }catch(InputMismatchException e){
+                    System.out.println("Tipo de dado inválido!");
+                    e.printStackTrace();
+                  }
+
                      if(option == 1){
                        Conta.sacar(listaContas.get(i), args);
                      }else{
@@ -263,7 +317,15 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
   System.out.println("(1) - POUPANÇA");
   System.out.println("(2) - CORRENTE");
   System.out.println("(3) - VERIFICAR DIFERENÇAS ENTRE OS TIPOS");
-  int option = input.nextInt();
+
+    int option = 0;
+
+   try{
+    option = input.nextInt();
+   }catch(InputMismatchException exception){
+    System.out.println("Tipo de dado inválido!");
+    exception.printStackTrace();
+   }
 
   switch(option){
     
@@ -271,6 +333,8 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
     case 1:
     
         input.nextLine();
+
+      try{ 
 
         System.out.println("INFORME SEU NOME COMPLETO:"); 
         String nomeDigitado1 = input.nextLine();
@@ -319,11 +383,18 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
           System.exit(0);
         }
         break;
+
+      }catch(InputMismatchException exception){
+        System.out.println("Tipo de dado inválido!");
+        exception.printStackTrace();          
+      }
     
     //CASO 'CORRENTE' FOR ESCOLHIDA
     case 2:
 
         input.nextLine();
+
+      try{
 
         System.out.println("INFORME SEU NOME COMPLETO:"); 
         String nomeDigitado2 = input.nextLine();
@@ -373,8 +444,16 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
      } 
      break;
 
+    }catch(InputMismatchException exception){
+      System.out.println("Tipo de dado inválido!");
+      exception.printStackTrace();          
+    }
+
     //CASO 'OPÇÃO 3' FOR ESCOLHIDA
     case 3:
+
+    try{
+      
        System.out.println("------------------------------");
        System.out.println("       CONTA POUPANÇA");
        System.out.println("*DEPÓSITO: a cada depósito efetuado é adicionado \n um bônus de 1,0% ao valor depositado");
@@ -394,6 +473,12 @@ public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
          System.exit(0);
        } 
        break;
+
+      }catch(InputMismatchException exception){
+        System.out.println("Tipo de dado inválido!");
+        exception.printStackTrace();          
+      }
+
 
   }
 
