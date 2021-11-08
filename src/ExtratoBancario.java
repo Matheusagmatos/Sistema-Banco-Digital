@@ -105,7 +105,7 @@ public class ExtratoBancario {
     bw.write("Valor bônus adicionado: " + realBrasileiro.format(valorBonus));
     }
     bw.newLine();
-    bw.write("--------------------------");
+    bw.write("-------------------------------");
     bw.newLine();
     bw.write("Data: " + dataAtual.getDayOfMonth() +"/"+ dataAtual.getMonthValue() +"/"+ dataAtual.getYear() + 
     "     Hora: " + horaAtual.getHour() +":"+ horaAtual.getMinute() +":"+ horaAtual.getSecond());
