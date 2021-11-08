@@ -57,8 +57,7 @@ public class ExtratoBancario {
     if(conta instanceof ContaCorrente){
     bw.write("Taxa saque conta corrente: " + realBrasileiro.format(taxaSaque));
     }
-    bw.newLine();
-    bw.write("--------------------------");
+    bw.write("-------------------------------");
     bw.newLine();
     bw.write("Data: " + dataAtual.getDayOfMonth() +"/"+ dataAtual.getMonthValue() +"/"+ dataAtual.getYear() + 
     "     Hora: " + horaAtual.getHour() +":"+ horaAtual.getMinute() +":"+ horaAtual.getSecond());
