@@ -21,7 +21,19 @@ public class ExtratoBancario {
   static NumberFormat realBrasileiro = NumberFormat.getCurrencyInstance(localeBR);
 
  
- 
+  /**
+   * Gera um extrato em formato ".txt" para o saque realizado pelo usuário
+   * <p>
+   * O arquivo 'ExtratoBancario.txt' é criado na área de trabalho
+   * 
+   * @param conta a conta do usuário (Poupança ou Corrente)
+   * @param valorSaque valor do saque digitado pelo usuário
+   * @param taxaSaque a taxa de saque correspondente, caso a conta do usuário seja do tipo 'Corrente'
+   * @param CP 'true' se a conta for uma instância de Conta Poupança, senão 'false'
+   * @param CC 'true' se a conta for uma instância de Conta Corrente, senão 'false'
+   * 
+   * @throws IOException
+   */
   public static void extratoSaque(Conta conta, double valorSaque, double taxaSaque, boolean CP, boolean CC) throws IOException{
 
     File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
@@ -67,7 +79,19 @@ public class ExtratoBancario {
   }
 
 
-
+  /**
+   * Gera um extrato em formato ".txt" para o depósito realizado pelo usuário
+   * <p>
+   * O arquivo 'ExtratoBancario.txt' é criado na área de trabalho
+   * 
+   * @param conta a conta do usuário (Poupança ou Corrente)
+   * @param valorSaque valor do saque digitado pelo usuário
+   * @param taxaSaque a taxa de saque correspondente, caso a conta do usuário seja do tipo 'Corrente'
+   * @param CP 'true' se a conta for uma instância de Conta Poupança, senão 'false'
+   * @param CC 'true' se a conta for uma instância de Conta Corrente, senão 'false'
+   * 
+   * @throws IOException
+   */
   public static void extratoDeposito(Conta conta, double valorDeposito, double valorBonus, boolean CP, boolean CC) throws IOException{
 
     File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
@@ -115,7 +139,19 @@ public class ExtratoBancario {
 
 
 
-
+  /**
+   * Gera um extrato em formato ".txt" para a nova conta aberta pelo usuário
+   * <p>
+   * O arquivo 'ExtratoBancario.txt' é criado na área de trabalho
+   * 
+   * @param conta a conta do usuário (Poupança ou Corrente)
+   * @param valorSaque valor do saque digitado pelo usuário
+   * @param taxaSaque a taxa de saque correspondente, caso a conta do usuário seja do tipo 'Corrente'
+   * @param CP 'true' se a conta for uma instância de Conta Poupança, senão 'false'
+   * @param CC 'true' se a conta for uma instância de Conta Corrente, senão 'false'
+   * 
+   * @throws IOException
+   */
   public static void extratoAberturaConta(Conta conta, boolean CP, boolean CC) throws IOException{
    
     File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
