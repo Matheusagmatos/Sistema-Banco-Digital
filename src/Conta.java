@@ -16,14 +16,14 @@ public class Conta {
 
   static NumberFormat realBrasileiro = NumberFormat.getCurrencyInstance(localeBR); //essa variável irá armazenar a formatação dos valores em na moeda 'Real Brasileiro'
     
-  private String titular; //alterar nome para titular
+  private String titular;
   private String cpf;
   private String agencia;
   private int numConta;
   private int senhaConta;
   private double saldo;
 
-  //Constructor
+  //Construtor
   public Conta(String titular, String cpf, String agencia, int numConta, int senhaConta, double saldo) {
     this.setTitular(titular);
     this.setCpf(cpf);
@@ -33,7 +33,7 @@ public class Conta {
   }
 
   
-//Getter & Setter methods   
+//Métodos Getter & Setter    
 public int getSenhaConta() {
     return senhaConta;
   }
@@ -73,7 +73,16 @@ public void setSaldo(double saldo){
 
 
 
-
+/**
+ * Método utilizado para realizar saques em conta (Poupança ou Corrente)
+ * <p>
+ * O valor do saque é informado pelo usuário e debitado da conta do mesmo
+ * 
+ * @param conta a conta do usuário (Corrente ou Poupança)
+ *  
+ * @param args utilizamos este parâmeto para chamar o método main do programa, pois
+ * neste método está o 'menu principal'
+ */
 public static void sacar(Conta conta, String[] args){
 
   System.out.println("--------------------------------");
@@ -173,7 +182,17 @@ public static void sacar(Conta conta, String[] args){
 
  }
 
-
+ 
+/**
+ * Método utilizado para realizar depósitos em conta (Poupança ou Corrente)
+ * <p>
+ * O valor do depósito é informado pelo usuário e adicionado da conta do mesmo
+ * 
+ * @param conta a conta do usuário (Corrente ou Poupança)
+ *  
+ * @param args utilizamos este parâmeto para chamar o método main do programa, pois
+ * neste método está o 'menu principal'
+ */
 public static void depositar(Conta conta, String[] args){
 
   System.out.println("--------------------------------");
@@ -239,6 +258,18 @@ public static void depositar(Conta conta, String[] args){
  }
 
 
+/**
+ * Método utilizado para realizar o acesso à conta do usuário (Poupança ou Corrente).
+ * <p>
+ * Solicita informações como número da conta e senha, para poder realizar o acesso à conta.
+ * <p>
+ * Permite ao usuário realizar saques e depósitos em conta.
+ * 
+ * @param conta a conta do usuário (Corrente ou Poupança)
+ *  
+ * @param args utilizamos este parâmeto para chamar o método main do programa, pois
+ * neste método está o 'menu principal'
+ */
 public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
       
       int numDigitado = 0;
@@ -290,7 +321,17 @@ public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
 }
 
 
-
+/**
+ * Método utilizado para imprimir os detalhes da conta do usuário
+ * <p>
+ * Imprime o tipo (Poupança ou Corrente), dados da conta (número, agência, saldo) 
+ * e os respectivos dados do titular (nome, cpf).
+ * 
+ * @param conta a conta do usuário (Corrente ou Poupança)
+ *  
+ * @param args utilizamos este parâmeto para chamar o método main do programa, pois
+ * neste método está o 'menu principal'
+ */
 public static void imprimirDetalhesConta(Conta conta){
 
  System.out.println("-----DADOS DA CONTA-----");
@@ -310,7 +351,20 @@ public static void imprimirDetalhesConta(Conta conta){
 }
 
 
-
+/**
+ * Método utilizado para abertura de conta (Poupança ou Corrente)
+ * <p>
+ * Possui um cadastro para abertura de conta, onde o usuário deve fornecer informações
+ * como por exemplo: o tipo de conta que deseja abrir (Poupança ou Corrente) e suas informações
+ * pessoais (nome, cpf).
+ * <p>
+ * Também é possível obter detalhes sobre os diferentes tipos de conta e suas respectivas taxas.
+ * 
+ * @param conta a conta do usuário (Corrente ou Poupança)
+ *  
+ * @param args utilizamos este parâmeto para chamar o método main do programa, pois
+ * neste método está o 'menu principal'
+ */
 public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
 
  System.out.println("QUAL O TIPO DE CONTA DESEJA ABRIR ?");
