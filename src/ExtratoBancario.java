@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 
-public class ExtratoBancario {
+public abstract class ExtratoBancario {
 
   
   static LocalDate dataAtual = LocalDate.now();
@@ -34,7 +34,7 @@ public class ExtratoBancario {
    * 
    * @throws IOException
    */
-  public static void extratoSaque(Conta conta, double valorSaque, double taxaSaque, boolean CP, boolean CC) throws IOException{
+  protected static void extratoSaque(Conta conta, double valorSaque, double taxaSaque, boolean CP, boolean CC) throws IOException{
 
     File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
     
@@ -92,7 +92,7 @@ public class ExtratoBancario {
    * 
    * @throws IOException
    */
-  public static void extratoDeposito(Conta conta, double valorDeposito, double valorBonus, boolean CP, boolean CC) throws IOException{
+  protected static void extratoDeposito(Conta conta, double valorDeposito, double valorBonus, boolean CP, boolean CC) throws IOException{
 
     File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
     
@@ -138,7 +138,6 @@ public class ExtratoBancario {
   }
 
 
-
   /**
    * Gera um extrato em formato ".txt" para a nova conta aberta pelo usuário
    * <p>
@@ -152,7 +151,7 @@ public class ExtratoBancario {
    * 
    * @throws IOException
    */
-  public static void extratoAberturaConta(Conta conta, boolean CP, boolean CC) throws IOException{
+  protected static void extratoAberturaConta(Conta conta, boolean CP, boolean CC) throws IOException{
    
     File extratoBancario = new File("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
     
