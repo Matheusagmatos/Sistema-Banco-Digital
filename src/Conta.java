@@ -83,7 +83,7 @@ public void setSaldo(double saldo){
  * @param args utilizamos este parâmeto para chamar o método main do programa, pois
  * neste método está o 'menu principal'
  */
-public static void sacar(Conta conta, String[] args){
+protected static void sacar(Conta conta, String[] args){
 
   System.out.println("--------------------------------");
   System.out.println("SEU SALDO ATUAL: " + realBrasileiro.format(conta.getSaldo()));
@@ -193,7 +193,7 @@ public static void sacar(Conta conta, String[] args){
  * @param args utilizamos este parâmeto para chamar o método main do programa, pois
  * neste método está o 'menu principal'
  */
-public static void depositar(Conta conta, String[] args){
+protected static void depositar(Conta conta, String[] args){
 
   System.out.println("--------------------------------");
   System.out.println("SEU SALDO ATUAL: " + realBrasileiro.format(conta.getSaldo())); 
@@ -270,7 +270,7 @@ public static void depositar(Conta conta, String[] args){
  * @param args utilizamos este parâmeto para chamar o método main do programa, pois
  * neste método está o 'menu principal'
  */
-public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
+protected static void acessarConta(ArrayList<Conta> listaContas, String[] args){
       
       int numDigitado = 0;
       int senhaDigitada = 0;
@@ -332,7 +332,7 @@ public static void acessarConta(ArrayList<Conta> listaContas, String[] args){
  * @param args utilizamos este parâmeto para chamar o método main do programa, pois
  * neste método está o 'menu principal'
  */
-public static void imprimirDetalhesConta(Conta conta){
+protected static void imprimirDetalhesConta(Conta conta){
 
  System.out.println("-----DADOS DA CONTA-----");
  System.out.println("TITULAR: " + conta.getTitular());
@@ -365,7 +365,7 @@ public static void imprimirDetalhesConta(Conta conta){
  * @param args utilizamos este parâmeto para chamar o método main do programa, pois
  * neste método está o 'menu principal'
  */
-public static void abrirConta(ArrayList<Conta> listaContas, String[] args){
+protected static void abrirConta(ArrayList<Conta> listaContas, String[] args){
 
  System.out.println("QUAL O TIPO DE CONTA DESEJA ABRIR ?");
   System.out.println("(1) - POUPANÇA");
