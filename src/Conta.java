@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class Conta {
+public abstract class Conta {
 
   static Scanner input = new Scanner(System.in);
   static Random aleatory = new Random();
