@@ -3,7 +3,7 @@ package src;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Validations {
+public abstract class Validations {
     
   static Scanner input = new Scanner(System.in);
 
@@ -19,7 +19,7 @@ public class Validations {
    * 
    * @return 'true' se o CPF for válido, ou 'false' se o cpf for inválido
    */
-  public static boolean validarCPF(String cpfDigitado){
+  protected static boolean validarCPF(String cpfDigitado){
     System.out.println();
 
     char[] cpfFormatado = cpfDigitado.toCharArray();
@@ -75,7 +75,7 @@ public class Validations {
    * 
    * @return 'true' se o número gerado for válido, ou 'false' se o número gerado for inválido
    */
-  public static boolean validarNumeroDaContaGerado(ArrayList<Conta> listaContas, int numConta){
+  protected static boolean validarNumeroDaContaGerado(ArrayList<Conta> listaContas, int numConta){
     if(numConta == 1000 || numConta == 1111){
       return false;
     }if(numConta == 2000 || numConta == 2222){
@@ -118,7 +118,7 @@ public class Validations {
    * 
    * @return 'true' se os dados informamdos forem válidos, ou 'false' se os dados informados forem inválidos
    */
-  public static boolean validarContaeSenhaDeAcesso(ArrayList<Conta> listaContas, int numContaDigitado, int senhaContaDigitada){
+  protected static boolean validarContaeSenhaDeAcesso(ArrayList<Conta> listaContas, int numContaDigitado, int senhaContaDigitada){
     boolean contaExiste = false;
      for(int i = 0; i < listaContas.size(); i++){
        if(listaContas.get(i).getNumConta() == numContaDigitado){
@@ -148,7 +148,7 @@ public class Validations {
    * 
    * @return 'true' se a senha for válida, ou 'false' se for inválida
    */
-  public static boolean validarSenha(int senhaDigitada){
+  protected static boolean validarSenha(int senhaDigitada){
     System.out.println();
     //Verifica se a senha possui menos de 4 dígitos
     if(senhaDigitada < 1000 || senhaDigitada > 9999){
