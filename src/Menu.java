@@ -31,7 +31,6 @@ static ArrayList<Conta> listaContas = new ArrayList<Conta>();
         Conta.abrirConta(listaContas, args);
       }
 
-
       input.close();
 
  }
