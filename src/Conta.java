@@ -3,6 +3,9 @@ package src;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import javax.print.DocFlavor.STRING;
+
 import java.util.Random;
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -70,6 +73,34 @@ public double getSaldo(){
 public void setSaldo(double saldo){
   this.saldo = saldo;
 }
+
+
+
+
+protected static void transferir(Conta contaOrigem, Conta contaDestino, String[] args){
+    
+     System.out.println("Seu saldo disponível: " + contaOrigem.saldo);
+     System.out.println("Valor da transferência: ");
+      double valorDigitado = input.nextDouble();
+       System.out.println("Trandsferência de " + valorDigitado + "para " + contaDestino.titular + " conta " + contaDestino.numConta);
+        System.out.println("CONFIRMA ? 1-S/2-N");
+         int option = input.nextInt();
+          if(option == 1){
+            contaDestino.saldo = contaDestino.saldo + valorDigitado;
+            contaOrigem.saldo = contaOrigem.saldo - valorDigitado;
+            System.out.println("TRANSAÇÃO EFETUADA COM SUCESSO");
+              //Imprime dados da operação realizada
+              System.out.println("----- TRANSFERÊNCIA -----");
+              System.out.println("Origem: " + contaOrigem.titular);
+              System.out.println("Destino: " + contaDestino.titular + " Conta: " + contaDestino.numConta);
+            //Inserir chamada ao método de imprimir extrato de transferência
+            Menu.main(args);
+          }else{
+            System.out.println("TRANSFERÊNCIA CANCELADA!");
+            Menu.main(args);
+          }
+}
+
 
 
 
