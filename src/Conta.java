@@ -85,6 +85,8 @@ protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas
        Conta contaDestino = null;
        System.out.println("Digite o número da conta de destino: ");
        int contaDigitada = input.nextInt();
+       //TESTE
+       System.out.println("Conta Digitada: " + contaDigitada);
        //Aqui percorre a lista de conta até encontrar o número da conta destino informado
        for(int i = 0; i <= listaContas.size(); i++){
          if(listaContas.get(i).numConta == contaDigitada){
