@@ -77,11 +77,24 @@ public void setSaldo(double saldo){
 
 
 
-protected static void transferir(Conta contaOrigem, Conta contaDestino, String[] args){
+protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas, String[] args){
     
      System.out.println("Seu saldo disponível: " + contaOrigem.saldo);
      System.out.println("Valor da transferência: ");
       double valorDigitado = input.nextDouble();
+       Conta contaDestino = null;
+       System.out.println("Digite o número da conta de destino: ");
+       int contaDigitada = input.nextInt();
+       //Aqui percorre a lista de conta até encontrar o número da conta destino informado
+       for(int i = 0; i <= listaContas.size(); i++){
+         if(listaContas.get(i).numConta == contaDigitada){
+           contaDestino = listaContas.get(i);
+           break;
+         }
+         //Caso o número da conta não seja encontrado
+         System.out.println("Número de conta destino inválido!");
+         Menu.main(args);
+       }
        System.out.println("Trandsferência de " + valorDigitado + "para " + contaDestino.titular + " conta " + contaDestino.numConta);
         System.out.println("CONFIRMA ? 1-S/2-N");
          int option = input.nextInt();
@@ -330,6 +343,7 @@ protected static void acessarConta(ArrayList<Conta> listaContas, String[] args){
                   System.out.println("SELECIONE UMA OPÇÃO:");
                    System.out.println("(1) - SACAR");
                    System.out.println("(2) - DEPOSITAR");
+                   System.out.println("(3) - TRANSFERIR");
 
                    int option = 0;
 
@@ -342,8 +356,10 @@ protected static void acessarConta(ArrayList<Conta> listaContas, String[] args){
 
                      if(option == 1){
                        Conta.sacar(listaContas.get(i), args);
-                     }else{
+                     }if(option == 2){
                        Conta.depositar(listaContas.get(i), args);
+                     }else{
+                       Conta.transferir(listaContas.get(i), listaContas, args);
                      }
 
                 }
