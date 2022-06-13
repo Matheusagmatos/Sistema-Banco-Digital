@@ -3,9 +3,6 @@ package src;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.print.DocFlavor.STRING;
-
 import java.util.Random;
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -76,10 +73,19 @@ public void setSaldo(double saldo){
 
 
 
-
+/**
+ * Método utilizado para realizar saques em conta (Poupança ou Corrente)
+ * <p>
+ * O valor do saque é informado pelo usuário e debitado da conta do mesmo
+ * 
+ * @param conta a conta do usuário (Corrente ou Poupança)
+ *  
+ * @param args utilizamos este parâmeto para chamar o método main do programa, pois
+ * neste método está o 'menu principal'
+ */
 protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas, String[] args){
     
-     System.out.println("Seu saldo disponível: " + contaOrigem.saldo);
+     System.out.println("Seu saldo disponível: " + realBrasileiro.format(contaOrigem.saldo));
      System.out.println("Valor da transferência: ");
       double valorDigitado = input.nextDouble();
        Conta contaDestino = null;
@@ -101,7 +107,7 @@ protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas
          Menu.main(args);
         }
 
-       System.out.println("Transferência de " + valorDigitado + "\n para " + contaDestino.titular + " Conta " + contaDestino.numConta);
+       System.out.println("Transferência de " + realBrasileiro.format(valorDigitado) + "\n para " + contaDestino.titular + " Conta " + contaDestino.numConta);
        System.out.println();
         System.out.println("CONFIRMA ? 1-S/2-N");
          int option = input.nextInt();
@@ -110,6 +116,7 @@ protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas
             contaOrigem.saldo = contaOrigem.saldo - valorDigitado;
             System.out.println();
             System.out.println("TRANSAÇÃO EFETUADA COM SUCESSO");
+            System.out.println();
               //Imprime dados da operação realizada
               System.out.println("----- TRANSFERÊNCIA -----");
               System.out.println("Origem: " + contaOrigem.titular);
