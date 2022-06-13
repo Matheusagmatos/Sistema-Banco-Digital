@@ -21,10 +21,15 @@ public abstract class ExtratoBancario {
   static NumberFormat realBrasileiro = NumberFormat.getCurrencyInstance(localeBR);
 
 
-  protected static void extratoTransferencia(Conta contaOrigem, Conta contaDestino, double valorTransferido){
+  protected static void extratoTransferencia(Conta contaOrigem, Conta contaDestino, double valorTransferido) throws IOException{
     File extratoBancario = new File ("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
+    
+    extratoBancario.createNewFile();
+
+    FileWriter fw = new FileWriter(extratoBancario);
 
     
+
   }
    
 
