@@ -85,15 +85,7 @@ protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas
        Conta contaDestino = null;
        System.out.println("Digite o número da conta de destino: ");
        int contaDigitada = input.nextInt();
-       //TESTE
-       System.out.println("Conta Digitada: " + contaDigitada);
-       //TESTE imprime todas as contas existentes
-       for(int i = 0; i < listaContas.size(); i++){
-        System.out.println("CONTA " + (i+1));
-        System.out.println(listaContas.get(i).titular);
-        System.out.println(listaContas.get(i).numConta);
-        System.out.println("-------------------------");
-       }
+       
        //Aqui percorre a lista de conta até encontrar o número da conta destino informado
        boolean contaExiste = false;
        for(int i = 0; i < listaContas.size(); i++){
@@ -109,17 +101,20 @@ protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas
          Menu.main(args);
         }
 
-       System.out.println("Transferência de " + valorDigitado + "para " + contaDestino.titular + " conta " + contaDestino.numConta);
+       System.out.println("Transferência de " + valorDigitado + "\n para " + contaDestino.titular + " Conta " + contaDestino.numConta);
+       System.out.println();
         System.out.println("CONFIRMA ? 1-S/2-N");
          int option = input.nextInt();
           if(option == 1){
             contaDestino.saldo = contaDestino.saldo + valorDigitado;
             contaOrigem.saldo = contaOrigem.saldo - valorDigitado;
+            System.out.println();
             System.out.println("TRANSAÇÃO EFETUADA COM SUCESSO");
               //Imprime dados da operação realizada
               System.out.println("----- TRANSFERÊNCIA -----");
               System.out.println("Origem: " + contaOrigem.titular);
-              System.out.println("Destino: " + contaDestino.titular + " Conta: " + contaDestino.numConta);
+              System.out.println("Conta Destino: " + contaDestino.titular + " / Conta: " + contaDestino.numConta);
+              System.out.println();
             //Inserir chamada ao método de imprimir extrato de transferência
             Menu.main(args);
           }else{
