@@ -20,7 +20,14 @@ public abstract class ExtratoBancario {
 
   static NumberFormat realBrasileiro = NumberFormat.getCurrencyInstance(localeBR);
 
- 
+
+  protected static void extratoTransferencia(Conta contaOrigem, Conta contaDestino, double valorTransferido){
+    File extratoBancario = new File ("C:/Users/Administrador/Desktop/ExtratoBancario.txt");
+
+    
+  }
+   
+
   /**
    * Gera um extrato em formato ".txt" para o saque realizado pelo usuário
    * <p>
