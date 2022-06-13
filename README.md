@@ -1,6 +1,8 @@
-# Sistema Banco Digital :heavy_dollar_sign:
+# Sistema Banco Digital :heavy_dollar_sign: (v 1.0)
  
  Um sistema simples para bancos digitais
+ 
+ *version 1.0*
  
 :point_right: **Neste sistema é possível criar contas dos seguintes tipos:**
  
@@ -30,4 +32,5 @@ Features que serão adicionadas em breve:
 
 * Transferência entre contas (em processo)
 * Criação de conta para pessoa jurídica
+* Implementação de Banco de Dados
 * Implementação de GUI
