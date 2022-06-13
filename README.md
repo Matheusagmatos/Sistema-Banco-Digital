@@ -32,4 +32,5 @@ Features que serão adicionadas em breve:
 
 * Transferência entre contas (em processo)
 * Criação de conta para pessoa jurídica
+* Implementação de Banco de Dados
 * Implementação de GUI
