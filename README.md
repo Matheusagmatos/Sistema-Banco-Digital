@@ -1,4 +1,4 @@
-# Sistema Banco Digital :heavy_dollar_sign:
+# Sistema Banco Digital :heavy_dollar_sign: version 1.0
  
  Um sistema simples para bancos digitais
  
