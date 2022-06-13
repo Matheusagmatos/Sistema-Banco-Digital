@@ -30,6 +30,26 @@ public abstract class ExtratoBancario {
 
     BufferedWriter bw = new BufferedWriter(fw);
 
+    bw.write("-------- BANCO DIGITAL --------");
+    bw.newLine();
+    bw.write("        Extrato Bancário        ");
+    bw.newLine();
+    bw.write("-------------------------------");
+    bw.newLine();
+    bw.write("Tipo de Operação: TRANSFERÊNCIA");
+    bw.newLine();
+    bw.write("ORIGEM: " + contaOrigem.getTitular() + " / Conta " + contaOrigem.getNumConta());
+    bw.newLine();
+    bw.write("DESTINO: " + contaDestino.getTitular() + " / Conta " + contaDestino.getNumConta());
+    bw.newLine();
+    bw.write("VALOR TRANSFERIDO: " + realBrasileiro.format(valorTransferido));
+    bw.newLine();
+    bw.write("-------------------------------");
+    bw.newLine();
+    bw.write("Data: " + dataAtual.getDayOfMonth() +"/"+ dataAtual.getMonthValue() +"/"+ dataAtual.getYear() + 
+    "     Hora: " + horaAtual.getHour() +":"+ horaAtual.getMinute() +":"+ horaAtual.getSecond());
+    bw.close();
+
   }
    
 
