@@ -2,6 +2,8 @@
  
  Um sistema simples para bancos digitais
  
+ *version 1.0*
+ 
 :point_right: **Neste sistema é possível criar contas dos seguintes tipos:**
  
  * **Conta Poupança**
