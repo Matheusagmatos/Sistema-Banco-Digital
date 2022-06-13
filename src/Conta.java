@@ -108,8 +108,8 @@ protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas
          System.out.println("Número de conta destino inválido!");
          Menu.main(args);
         }
-        
-       System.out.println("Trandsferência de " + valorDigitado + "para " + contaDestino.titular + " conta " + contaDestino.numConta);
+
+       System.out.println("Transferência de " + valorDigitado + "para " + contaDestino.titular + " conta " + contaDestino.numConta);
         System.out.println("CONFIRMA ? 1-S/2-N");
          int option = input.nextInt();
           if(option == 1){
