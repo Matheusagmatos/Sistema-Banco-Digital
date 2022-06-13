@@ -99,14 +99,13 @@ public abstract class Conta {
   protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas, String[] args) {
 
     System.out.println("Seu saldo disponível: " + realBrasileiro.format(contaOrigem.saldo));
-    System.out.println("Valor da transferência: ");
+    System.out.println("Digite o valor da transferência: ");
     double valorDigitado = input.nextDouble();
     Conta contaDestino = null;
     System.out.println("Digite o número da conta de destino: ");
     int contaDigitada = input.nextInt();
 
     // Aqui percorre a lista de conta até encontrar o número da conta destino
-    // informado
     boolean contaExiste = false;
     for (int i = 0; i < listaContas.size(); i++) {
       if (listaContas.get(i).numConta == contaDigitada) {
@@ -115,8 +114,9 @@ public abstract class Conta {
         break;
       }
     }
+
+    // Caso o número da conta não seja encontrado
     if (contaExiste == false) {
-      // Caso o número da conta não seja encontrado
       System.out.println("Número de conta destino inválido!");
       Menu.main(args);
     }
@@ -126,6 +126,7 @@ public abstract class Conta {
     System.out.println();
     System.out.println("CONFIRMA ? 1-S/2-N");
     int option = input.nextInt();
+
     if (option == 1) {
       contaDestino.saldo = contaDestino.saldo + valorDigitado;
       contaOrigem.saldo = contaOrigem.saldo - valorDigitado;
@@ -136,8 +137,13 @@ public abstract class Conta {
       System.out.println("----- TRANSFERÊNCIA -----");
       System.out.println("Origem: " + contaOrigem.titular);
       System.out.println("Conta Destino: " + contaDestino.titular + " / Conta: " + contaDestino.numConta);
+      System.out.println("Valor Transferido: " + realBrasileiro.format(valorDigitado));
       System.out.println();
-      // Inserir chamada ao método de imprimir extrato de transferência
+      try {
+        ExtratoBancario.extratoTransferencia(contaOrigem, contaDestino, valorDigitado);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
       Menu.main(args);
     } else {
       System.out.println("TRANSFERÊNCIA CANCELADA!");
