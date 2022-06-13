@@ -121,7 +121,7 @@ public abstract class Conta {
       Menu.main(args);
     }
 
-    System.out.println("Transferência de " + realBrasileiro.format(valorDigitado) + "\n para " + contaDestino.titular
+    System.out.println("Transferência de " + realBrasileiro.format(valorDigitado) + "\npara " + contaDestino.titular
         + " Conta " + contaDestino.numConta);
     System.out.println();
     System.out.println("CONFIRMA ? 1-S/2-N");
