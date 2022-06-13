@@ -87,7 +87,7 @@ protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas
        int contaDigitada = input.nextInt();
        //TESTE
        System.out.println("Conta Digitada: " + contaDigitada);
-       //TESTE 2
+       //TESTE imprime todas as contas existentes
        for(int i = 0; i < listaContas.size(); i++){
         System.out.println("CONTA " + (i+1));
         System.out.println(listaContas.get(i).titular);
@@ -95,15 +95,20 @@ protected static void transferir(Conta contaOrigem, ArrayList<Conta> listaContas
         System.out.println("-------------------------");
        }
        //Aqui percorre a lista de conta até encontrar o número da conta destino informado
-       for(int i = 0; i <= listaContas.size(); i++){
+       boolean contaExiste = false;
+       for(int i = 0; i < listaContas.size(); i++){
          if(listaContas.get(i).numConta == contaDigitada){
            contaDestino = listaContas.get(i);
+           contaExiste = true;
            break;
          }
+       }
+        if(contaExiste == false){
          //Caso o número da conta não seja encontrado
          System.out.println("Número de conta destino inválido!");
          Menu.main(args);
-       }
+        }
+        
        System.out.println("Trandsferência de " + valorDigitado + "para " + contaDestino.titular + " conta " + contaDestino.numConta);
         System.out.println("CONFIRMA ? 1-S/2-N");
          int option = input.nextInt();
