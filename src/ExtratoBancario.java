@@ -28,7 +28,7 @@ public abstract class ExtratoBancario {
 
     FileWriter fw = new FileWriter(extratoBancario);
 
-    
+    BufferedWriter bw = new BufferedWriter(fw);
 
   }
    
