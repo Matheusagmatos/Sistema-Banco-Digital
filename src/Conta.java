@@ -84,12 +84,14 @@ public abstract class Conta {
   }
 
   /**
-   * Método utilizado para realizar saques em conta (Poupança ou Corrente)
+   * Método utilizado para realizar transferências entre contas.
    * <p>
-   * O valor do saque é informado pelo usuário e debitado da conta do mesmo
+   * O usuário informa a conta que irá receber a transferência.
+   * O método busca no ArrayList 'listaContas' se esta conta realmente
+   * existe e prossegue com a transferência.
    * 
-   * @param conta a conta do usuário (Corrente ou Poupança)
-   * 
+   * @param contaOrigem a conta que está realizando a tranferência
+   * @param listaContas a lista de todas as contas cadastradas no banco
    * @param args  utilizamos este parâmeto para chamar o método main do programa,
    *              pois
    *              neste método está o 'menu principal'
