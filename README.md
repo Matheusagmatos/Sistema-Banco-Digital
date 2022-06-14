@@ -22,9 +22,10 @@
  
 :point_right: **As seguintes opções estão disponíveis para as contas:**
 
-* Sacar
-* Depositar
-* Consultar Saldo
+* Saque
+* Depósito
+* Transferência
+* Consulta de Saldo
 
 **Todas as transações realizadas geram um extrato bancário em formato .txt**
 
